@@ -35,13 +35,16 @@ app.use(
 // app.use(
 //     cors()
 //   );
+
+app.set("trust proxy", 1);
 app.use(cors( 
   {
+    credentials: true,
     // "origin": "*",
     // "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     // "optionsSuccessStatus": 204
     origin: 'https://new-youtube-two.vercel.app', // Cho phép gửi và nhận cookie từ client tại địa chỉ này
-    credentials: true,
+    
   }
 ))
 
