@@ -44,6 +44,7 @@ export const signin = async (req, res, next) => {
       .cookie("access_token", token, {
         httpOnly: true,
       })
+      .setHeader('set-cookie',"token=`${token}`")
       .status(200)
       .json(others)
     
