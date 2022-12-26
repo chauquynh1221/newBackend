@@ -41,12 +41,11 @@ export const signin = async (req, res, next) => {
       ...others
     } = user._doc;
     res
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
-      .setHeader('set-cookie',"token=`${token}`")
+      // .cookie("access_token", token, {
+      //   httpOnly: true,
+      // })
       .status(200)
-      .json(others)
+      .json({others,token})
     
 
   } catch (err) {
