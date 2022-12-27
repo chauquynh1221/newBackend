@@ -5,8 +5,7 @@ import userRouter from "./routes/user.js";
 import videoRouter from "./routes/video.js";
 import commentRouter from "./routes/comment.js";
 import authRouter from "./routes/auth.js";
-import cookieParser from "cookie-parser"
-import  session from 'express-session';
+import cookieParser from "cookie-parser";
 import cors from "cors"
 
 
@@ -36,17 +35,12 @@ app.use(
 // app.use(
 //     cors()
 //   );
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
+
 app.use(cors( 
   {
     credentials: true,
     // "origin": "*",
-    // "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     // "optionsSuccessStatus": 204
     origin: 'http://localhost:3000', // Cho phép gửi và nhận cookie từ client tại địa chỉ này
     
