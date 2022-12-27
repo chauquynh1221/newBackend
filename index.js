@@ -35,8 +35,12 @@ app.use(
 // app.use(
 //     cors()
 //   );
-
-app.set("trust proxy", 1);
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 app.use(cors( 
   {
     credentials: true,
