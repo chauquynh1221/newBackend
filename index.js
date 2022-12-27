@@ -6,6 +6,7 @@ import videoRouter from "./routes/video.js";
 import commentRouter from "./routes/comment.js";
 import authRouter from "./routes/auth.js";
 import cookieParser from "cookie-parser"
+const session = require('express-session');
 import cors from "cors"
 
 
