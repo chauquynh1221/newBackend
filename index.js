@@ -38,7 +38,7 @@ app.use(
 
 app.use(cors( 
   {
-    credentials: include,
+    credentials: "include",
     // "origin": "*",
     // "optionsSuccessStatus": 204
     origin: 'http://localhost:3000', // Cho phép gửi và nhận cookie từ client tại địa chỉ này
