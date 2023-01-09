@@ -42,7 +42,7 @@ app.use(cors(
     // "origin": "*",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     // "optionsSuccessStatus": 204
-    origin: 'http://localhost:3000', // Cho phép gửi và nhận cookie từ client tại địa chỉ này
+    origin: 'https://youtube-client.onrender.com', // Cho phép gửi và nhận cookie từ client tại địa chỉ này
     
   }
 ))
