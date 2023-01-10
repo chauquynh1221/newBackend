@@ -6,8 +6,8 @@ import videoRouter from "./routes/video.js";
 import commentRouter from "./routes/comment.js";
 import authRouter from "./routes/auth.js";
 import cookieParser from "cookie-parser";
-import cors from "cors"
-import  expressSession from 'express-session'
+import cors from "cors";
+import  session from 'express-session'
 
 
 
@@ -46,28 +46,20 @@ app.use(cors(
     
   }
 ))
-Object.defineProperty(expressSession.Cookie.prototype, 'sameSite', {
-  // sameSite cannot be set to `None` if cookie is not marked secure
-  get() {
-    return this._sameSite === 'none' && !this.secure ? 'lax' : this._sameSite;
-  },
-  set(value) {
-    this._sameSite = value;
-  }
-});
+
+var sess = {secret: 'Somekey',
+  cookie: { httpOnly: false, SameSite : 'None', secure: true  },
+  saveUninitialized: true,
+  resave: true
+}
+app.use(session(sess))
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api",authRouter)
 app.use("/api",userRouter)
 app.use("/api",videoRouter)
 app.use("/api",commentRouter)
-app.use(expressSession({
-  // ... other options
-   cookie: {
-     secure: 'auto',
-     sameSite: 'none'
-   }
- }));
+
 app.use((err, req, res, next) => {
     const status = err.status   || 500
     const message = err.message || "some thing went wrong !"
