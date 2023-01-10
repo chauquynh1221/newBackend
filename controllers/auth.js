@@ -43,7 +43,10 @@ export const signin = async (req, res, next) => {
     } = user._doc;
     res
       .cookie("access_token", token, {
+        expires: new Date(Date.now() + 900000),
         httpOnly: true,
+        secure: true,
+        sameSite: 'none'
       })
       .status(200)
       .json(others)
