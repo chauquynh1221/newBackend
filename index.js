@@ -7,7 +7,7 @@ import commentRouter from "./routes/comment.js";
 import authRouter from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
-
+import  expressSession from 'express-session'
 
 
 
