@@ -48,7 +48,7 @@ app.use(cors(
 ))
 
 var sess = {secret: 'Somekey',
-  cookie: { httpOnly: false, SameSite : 'None', secure: true  },
+  cookie: { httpOnly: true, SameSite : 'none', secure: true  },
   saveUninitialized: true,
   resave: true
 }
