@@ -46,14 +46,28 @@ app.use(cors(
     
   }
 ))
-
+Object.defineProperty(expressSession.Cookie.prototype, 'sameSite', {
+  // sameSite cannot be set to `None` if cookie is not marked secure
+  get() {
+    return this._sameSite === 'none' && !this.secure ? 'lax' : this._sameSite;
+  },
+  set(value) {
+    this._sameSite = value;
+  }
+});
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api",authRouter)
 app.use("/api",userRouter)
 app.use("/api",videoRouter)
 app.use("/api",commentRouter)
-
+app.use(expressSession({
+  // ... other options
+   cookie: {
+     secure: 'auto',
+     sameSite: 'none'
+   }
+ }));
 app.use((err, req, res, next) => {
     const status = err.status   || 500
     const message = err.message || "some thing went wrong !"
