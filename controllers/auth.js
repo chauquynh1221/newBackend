@@ -85,8 +85,11 @@ export const ggAuth = async (req, res, next) => {
       }, process.env.JWT);
       res
         .cookie("access_token", token, {
-          httpOnly: true,
-        })
+        expires: new Date(Date.now() + 900000),
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none'
+      })
         .status(200)
         .json(saveUser._doc)
 
