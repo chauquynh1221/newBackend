@@ -1,5 +1,5 @@
 import express from "express";
-import {addVideo, updateVideo ,getVideo ,deleteVideo, viewVideo, trendVideo, randomVideo,subVideo,getByChannel ,getByTag, searchVideo} from "../controllers/video.js"
+import {addVideo, updateVideo ,getVideo ,deleteVideo, viewVideo, trendVideo, randomVideo,subVideo,getByChannel ,getByTag, searchVideo, slug} from "../controllers/video.js"
 import { verifyToken } from "../verifyToken.js";
 
 
@@ -35,5 +35,7 @@ router.get("/video/tags",getByTag)
 router.get("/video/search",searchVideo)
 /// get all video Channel 
 router.get("/video/:id", getByChannel)
+
+router.get("/video/slug/:slug",slug)
 
 export default router;
