@@ -57,6 +57,17 @@ export const deleteVideo = async (req,res, next) => {
 
 }
 
+export const slug = async (req, res,next) => {
+        const slug = req.params.slug
+        try {
+            const videoSlug = await Video.find({ tags: { $in: slug } }).limit(20);
+            const chau = 2 ;
+            res.status(200).json(videoSlug);
+        } catch (error) {
+            next(error);
+        }
+}
+
 export const getVideo = async (req, res, next) => {
     try {
       const video = await Video.findById(req.params.id);
